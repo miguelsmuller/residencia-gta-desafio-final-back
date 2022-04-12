@@ -16,6 +16,11 @@
 ## Planning
 
 - [Trello Board](https://trello.com/b/KfE5ZTRF/the-jasons-projectd)
+- [Data Base Planning](./docs/PLANING_DB.md)
+- [Back-End Planning](./docs/PLANING_BACK.md)
 
-- [Data Base](./docs/PLANING_DB.md)
-- [Back-End](./docs/PLANING_BACK.md)
+<br/>
+
+## Docker
+
+`docker-compose up --detach --force-recreate --build`

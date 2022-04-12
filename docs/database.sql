@@ -1,41 +1,45 @@
-CREATE TABLE restaurants (
-    id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    owner varchar(255) NOT NULL,
-    address varchar(255) NOT NULL,
-    description text NOT NULL,
-    image varchar(255) NOT NULL,
-
-    PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS restaurants (
+    "id" SERIAL,
+    "name" TEXT,
+    "owner" TEXT,
+    "address" TEXT,
+    "description" TEXT,
+    "image" TEXT,
+	PRIMARY KEY ("id")
 );
 
-CREATE TABLE products (
-    id int NOT NULL AUTO_INCREMENT,
-    id_restaurant int NOT NULL,
-    name varchar(255) NOT NULL,
-    description text NOT NULL,
-    price float(64) NOT NULL,
-    image varchar(255) NOT NULL,
-
-    PRIMARY KEY (id)
-
-    FOREIGN KEY (id_restaurant) REFERENCES restaurants(id),
+CREATE TABLE IF NOT EXISTS products (
+    "id" SERIAL,
+    "id_restaurant" INT,
+    "name" TEXT,
+    "description" TEXT,
+    "price" MONEY,
+    "image" TEXT,
+	PRIMARY KEY ("id"),
+	
+	CONSTRAINT fk_restaurant
+		FOREIGN KEY("id_restaurant") 
+			REFERENCES restaurants("id")
 );
 
-CREATE TABLE additional (
-    id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    price float(64) NOT NULL,
-
-    PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS additional (
+    "id" SERIAL,
+    "name" TEXT,
+    "price" MONEY,
+	PRIMARY KEY ("id")
 );
 
-CREATE TABLE products_extras (
-    id_product int NOT NULL,
-    id_additional int NOT NULL,
+CREATE TABLE IF NOT EXISTS products_extras (
+    "id_product" INT,
+    "id_additional" INT,
 
-    PRIMARY KEY (id,id_additional),
+    PRIMARY KEY ("id_product","id_additional"),
+    
+	CONSTRAINT fk_product
+		FOREIGN KEY("id_product") 
+			REFERENCES products("id"),
 
-    FOREIGN KEY (id_product) REFERENCES products(id),
-    FOREIGN KEY (id_additional) REFERENCES additional(id)
+	CONSTRAINT fk_additional
+		FOREIGN KEY("id_additional") 
+			REFERENCES additional("id")
 );
