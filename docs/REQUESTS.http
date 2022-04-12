@@ -1,6 +1,12 @@
 @hostname = localhost
-@port = 5000
+@port = 1234
 @host = {{hostname}}:{{port}}
+
+
+### Create Restaurant
+POST http://{{host}}/health HTTP/1.1
+
+
 
 
 ### Create Restaurant
@@ -8,7 +14,7 @@ POST http://{{host}}/restaurants HTTP/1.1
 content-type: application/json
 
 {
-    
+
 }
 
 ### Get All Restaurants

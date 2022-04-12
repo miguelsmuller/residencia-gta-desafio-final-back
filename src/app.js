@@ -1,12 +1,12 @@
 const express = require('express');
+// const morgan = require('morgan');
 
 const app = express();
-const port = 1234;
+// app.use(morgan('common'));
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.post('/health', (_, res) => {
+  res.send();
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+module.exports = app;
