@@ -1,11 +1,34 @@
 {
   "name": "residencia-gta-desafio-final-back",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src/app.js"
   },
-  "author": "",
-  "license": "ISC"
+  "contributors": [
+    {
+      "name": "Alexia Assumpção",
+      "url": "https://github.com/alexiaassumpcao"
+    },
+    {
+      "name": "Carlos Lope",
+      "url": "https://github.com/devcarlosl"
+    },
+    {
+      "name": "Heloise Meirelles",
+      "url": "https://github.com/Heloisemeirelles"
+    },
+    {
+      "name": "Miguel Müller",
+      "url": "https://github.com/miguelsmuller"
+    }
+  ],
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.15"
+  }
 }
