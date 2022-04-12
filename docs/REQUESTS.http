@@ -1,0 +1,18 @@
+@hostname = localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+
+
+### Create Restaurant
+POST http://{{host}}/restaurants HTTP/1.1
+content-type: application/json
+
+{
+    
+}
+
+### Get All Restaurants
+GET http://{{host}}/restaurants
+
+### Get Products of Restaurant
+GET http://{{host}}/restaurants/000000/products

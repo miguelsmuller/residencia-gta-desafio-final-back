@@ -1,12 +1,12 @@
 # **Back-End**
 
-**`Express`** X Next.js
+**`Express`** X ~~**Next.js**~~
 
 _Lembrar de implementar validações_
 
-
 - GET {URL}/restaurants/
-__response body__
+  **response body**
+
 ```
 "restaurants":[
     {
@@ -18,8 +18,10 @@ __response body__
     }, ...
 ]
 ```
+
 - GET {URL}/restaurants/:id
-__response body__
+  **response body**
+
 ```
 {
     "name": "Mc donalds", //string
@@ -29,9 +31,11 @@ __response body__
     "image": "https://insira.uma.imagem.aqui.com.br/", //string
 }
 ```
+
 - GET {URL}/restaurants/:id/products
-`ja vir com os adicionais de cada produto`
-__response body__
+  `ja vir com os adicionais de cada produto`
+  **response body**
+
 ```
 {
     "name": "Mc donalds", //string
@@ -50,8 +54,9 @@ __response body__
 ```
 
 - GET {URL}/restaurants/:id/products/:id
-`ja vir com os adicionais de cada produto`
-__response body__
+  `ja vir com os adicionais de cada produto`
+  **response body**
+
 ```
 {
     "name": "cheeseburguer", //string
@@ -60,9 +65,11 @@ __response body__
     "image": "https://insira.uma.imagem.aqui.com.br/", //string
 }
 ```
+
 - GET {URL}/restaurants/:id/products/:id/extras
-`ja vir com os adicionais de cada produto`
-__response body__
+  `ja vir com os adicionais de cada produto`
+  **response body**
+
 ```
 {
     "name": "cheeseburguer", //string
@@ -77,8 +84,10 @@ __response body__
     ]
 }
 ```
+
 - POST {URL}/restaurants/:id/products/
-__request body__
+  **request body**
+
 ```
 {
     "name": "cheeseburguer", //string
@@ -88,14 +97,15 @@ __request body__
     "extras": [
         {
             "name": "queijo", //string
-            "price": 2.00, //float64      
+            "price": 2.00, //float64
         }
-    ]  
+    ]
 }
 ```
 
 - POST {URL}/restaurants/
-__request body__
+  **request body**
+
 ```
 {
     "name": "Mc donalds", //string
