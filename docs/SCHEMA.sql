@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS products (
 			REFERENCES restaurants("id")
 );
 
-CREATE TABLE IF NOT EXISTS additional (
+CREATE TABLE IF NOT EXISTS additionals (
     "id" SERIAL,
     "name" TEXT,
     "price" MONEY,
@@ -41,5 +41,5 @@ CREATE TABLE IF NOT EXISTS products_extras (
 
 	CONSTRAINT fk_additional
 		FOREIGN KEY("id_additional") 
-			REFERENCES additional("id")
+			REFERENCES additionals("id")
 );

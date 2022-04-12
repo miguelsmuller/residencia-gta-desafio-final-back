@@ -1,38 +1,38 @@
 # **Banco da dados**
 
-**`Postgres`** X MySQL
+**`Postgres`** X ~~**MySQL**~~
 
 ![DER](./images/DER.jpg)
 
 ### restaurants
 
-| field       | type         | obs |
-| ----------- | ------------ | --- |
-| **id**      | int          | PK  |
-| name        | varchar(255) |     |
-| owner       | varchar(255) |     |
-| address     | varchar(255) |     |
-| description | text         |     |
-| image       | varchar(255) |     |
+| field       | type   | obs |
+| ----------- | ------ | --- |
+| **id**      | SERIAL | PK  |
+| name        | TEXT   |     |
+| owner       | TEXT   |     |
+| address     | TEXT   |     |
+| description | TEXT   |     |
+| image       | TEXT   |     |
 
 ### products
 
-| field             | type         | obs |
-| ----------------- | ------------ | --- |
-| **id**            | int          | PK  |
-| **id_restaurant** | int          | FK  |
-| name              | varchar(255) |     |
-| description       | text         |     |
-| price             | float(64)    |     |
-| image             | varchar(255) |     |
+| field             | type   | obs |
+| ----------------- | ------ | --- |
+| **id**            | SERIAL | PK  |
+| **id_restaurant** | INT    | FK  |
+| name              | TEXT   |     |
+| description       | TEXT   |     |
+| price             | MONEY  |     |
+| image             | TEXT   |     |
 
-### additional
+### additionals
 
-| field  | type         | obs |
-| ------ | ------------ | --- |
-| **id** | int          | PK  |
-| name   | varchar(255) |     |
-| price  | float(64)    |     |
+| field  | type   | obs |
+| ------ | ------ | --- |
+| **id** | SERIAL | PK  |
+| name   | TEXT   |     |
+| price  | MONEY  |     |
 
 ### products_extras
 
