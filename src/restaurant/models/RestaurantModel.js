@@ -28,9 +28,9 @@ export default class RestaurantModel {
   async getAll() {
     const sql = `SELECT * from public.restaurants WHERE 1 = 1;`;
 
-    const resultado = await this.dbConnection.query(sql);
+    const results = await this.dbConnection.query(sql);
 
-    return resultado.rows;
+    return results.rows;
   }
 }
 
