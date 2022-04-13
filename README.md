@@ -16,8 +16,8 @@
 ## Planning
 
 - [Trello Board](https://trello.com/b/KfE5ZTRF/the-jasons-projectd)
-- [Data Base Planning](./docs/PLANING_DB.md)
-- [Back-End Planning](./docs/PLANING_BACK.md)
+- [Data Base Planning](./docs/planing/PLANING_DB.md)
+- [Back-End Planning](./docs/planing/PLANING_BACK.md)
 
 ## Docker
 
