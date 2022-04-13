@@ -9,11 +9,13 @@
     "google"
   ],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "rules": {
     "new-cap": "off",
-    "max-le": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "no-unused-vars": "warn",
+    "require-jsdoc": "off"
   }
 }

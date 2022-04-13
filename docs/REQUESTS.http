@@ -3,7 +3,10 @@
 @host = {{hostname}}:{{port}}
 
 
-### {GET} LISTA RESTAURANTES
+###
+POST http://{{host}}/health
+
+###
 GET http://{{host}}/restaurants
 
 
@@ -34,17 +37,17 @@ content-type: application/json
   "owner": "Ronald MC Donalds",
   "address": "Rua sem cobertura, 33",
   "description": "Restaurante para comidas frias",
-  "image": "https://insira.uma.imagem.aqui.com.br/",
+  "image": "https://insira.uma.imagem.aqui.com.br/"
 }
 
 
 ### {POST} SALVAR PRODUTO EM UM RESTAURANTE
-POST http://{{host}}//restaurants/0000/products/ HTTP/1.1
+POST http://{{host}}/restaurants/0000/products/ HTTP/1.1
 content-type: application/json
 
 {
   "name": "cheeseburguer",
   "description": "pão, carne e queijo",
   "price": 15.00,
-  "image": "https://insira.uma.imagem.aqui.com.br/",
+  "image": "https://insira.uma.imagem.aqui.com.br/"
 }

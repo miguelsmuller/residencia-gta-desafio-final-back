@@ -2,6 +2,7 @@
   "name": "residencia-gta-desafio-final-back",
   "version": "1.0.0",
   "license": "ISC",
+  "type": "module",
   "scripts": {
     "server": "nodemon ./src/server.js"
   },
@@ -24,11 +25,13 @@
     }
   ],
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "4.17.3",
+    "pg": "8.7.3",
+    "pg-promise": "^10.11.1"
   },
   "devDependencies": {
-    "eslint": "^8.13.0",
-    "eslint-config-google": "^0.14.0",
-    "nodemon": "^2.0.15"
+    "eslint": "8.13.0",
+    "eslint-config-google": "0.14.0",
+    "nodemon": "2.0.15"
   }
 }

@@ -1,9 +1,3 @@
-CREATE DATABASE jsons
-  WITH
-  OWNER = admin
-  ENCODING = 'UTF8'
-  CONNECTION LIMIT = -1;
-
 CREATE TABLE IF NOT EXISTS restaurants (
   "id" SERIAL,
   "name" TEXT,
@@ -52,3 +46,6 @@ CREATE TABLE IF NOT EXISTS products_extras (
 		FOREIGN KEY("id_additional")
 			REFERENCES additionals("id")
 );
+
+INSERT INTO restaurants(name, owner, address, description, image)
+  VALUES ('Restaurante1', 'Miguel Muller', 'Rua da Ladeira', 'Restaurante Underground', 'http://');

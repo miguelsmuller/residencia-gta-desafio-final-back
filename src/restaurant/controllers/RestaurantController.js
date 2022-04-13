@@ -1,65 +1,74 @@
-const restaurants = []
-
-class RestaurantController {
-  index(req, res) {
-    res.json(restaurants)
+export default class RestaurantController {
+  constructor(restaurantModel) {
+    this.restaurantModel = restaurantModel;
   }
 
-  store(req, res) {
-    const { body } = req
+  async store(req, res) {
+    const {
+      name, owner, address, description, image,
+    } = req.body;
 
-    const nextId = restaurants[restaurants.length - 1]?.id + 1 || 1;
+    const newRestaurant = {
+      name, owner, address, description, image,
+    };
+    console.log('model: ', RestaurantModel);
 
-    restaurants.push({
-        id: nextId,
-        ...body
-    })
-
-    res.status(201).setHeader('Location', `http://localhost:1234/restaurants/${nextId}`).send()
+    const restaurantId = await RestaurantModel.create(newRestaurant);
+    res.setHeader('Location', `/restaurants/${restaurantId}`);
+    res.sendStatus(201);
   }
 
-    show(req, res) {
-    const { id } = req.params
 
-    const restaurant = restaurants.find(restaurant => restaurant.id === +id)
+  async getAll(_, res) {
+    const response = await this.restaurantModel.getAll();
 
-    if (!restaurant) {
-        res.sendStatus(404)
-        return;
-    }
-
-    res.json(restaurant)
+    res.json(response);
   }
 
-  update(req, res) {
-    const { params, body } = req
 
-    const restaurantIndex = restaurants.findIndex(restaurant => restaurant.id === +params.id)
-    if (restaurantIndex < 0) {
-        res.sendStatus(404)
-        return;
-    }
+  //   show(req, res) {
+  //   const {id} = req.params;
 
-    restaurants[restaurantIndex] = {
-        id: +params.id,
-        ...body
-    }
+  //   const restaurant = resta
+  // urants.find((restaurant) => restaurant.id === +id);
 
-    res.send()
-  }
+  //   if (!restaurant) {
+  //       res.sendStatus(404);
+  //       return;
+  //   }
 
-  delete(req, res) {
-    const { id } = req.params
+  //   res.json(restaurant);
+  // }
 
-    const restaurantIndex = restaurants.findIndex(restaurant => restaurant.id === +id)
-    if (restaurantIndex < 0) {
-        res.sendStatus(404)
-        return;
-    }
+  // update(req, res) {
+  //   const {params, body} = req;
 
-    restaurants.splice(restaurantIndex, 1)
-    res.send()
-  }
+  //   const restaurantIndex = restaurants.findIndex(
+  //     (restaurant) => restaurant.id === +params.id);
+  //   if (restaurantIndex < 0) {
+  //       res.sendStatus(404);
+  //       return;
+  //   }
+
+  //   restaurants[restaurantIndex] = {
+  //       id: +params.id,
+  //       ...body,
+  //   };
+
+  //   res.send();
+  // }
+
+  // delete(req, res) {
+  //   const {id} = req.params;
+
+  //   const restaurantIndex = restaurants.findIndex(
+  //     (restaurant) => restaurant.id === +id);
+  //   if (restaurantIndex < 0) {
+  //       res.sendStatus(404);
+  //       return;
+  //   }
+
+  //   restaurants.splice(restaurantIndex, 1);
+  //   res.send();
+  // }
 }
-
-module.exports = new RestaurantController()

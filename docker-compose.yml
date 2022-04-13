@@ -23,7 +23,7 @@ services:
       - database
     networks:
       - appNetwork
-    
-networks: 
+
+networks:
   appNetwork:
     driver: bridge
