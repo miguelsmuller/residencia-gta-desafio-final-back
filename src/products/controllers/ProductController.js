@@ -1,5 +1,5 @@
 export default class ProductController {
-  constructor(restaurantModel) {
+  constructor(productModel) {
     this.productModel = productModel;
   }
 
