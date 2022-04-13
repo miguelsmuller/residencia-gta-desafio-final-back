@@ -3,22 +3,48 @@
 @host = {{hostname}}:{{port}}
 
 
-### Create Restaurant
-POST http://{{host}}/health HTTP/1.1
+### {GET} LISTA RESTAURANTES
+GET http://{{host}}/restaurants
+
+
+### {GET} RESTAURANTE ESPECIFICO
+GET http://{{host}}/restaurants/0000
+
+
+### {GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO
+GET http://{{host}}/restaurants/0000/products
+
+
+### {GET} DADOS DE UM PRODUTO UNICO
+GET http://{{host}}/restaurants/0000/products/9999
+
+
+### {GET} EXTRAS DE UM PRODUTO UNICO
+GET http://{{host}}/restaurants/0000/products/9999/extras
 
 
 
 
-### Create Restaurant
+### {POST} SALVA UM RESTAURANTE
 POST http://{{host}}/restaurants HTTP/1.1
 content-type: application/json
 
 {
-
+  "name": "MC Donalds",
+  "owner": "Ronald MC Donalds",
+  "address": "Rua sem cobertura, 33",
+  "description": "Restaurante para comidas frias",
+  "image": "https://insira.uma.imagem.aqui.com.br/",
 }
 
-### Get All Restaurants
-GET http://{{host}}/restaurants
 
-### Get Products of Restaurant
-GET http://{{host}}/restaurants/000000/products
+### {POST} SALVAR PRODUTO EM UM RESTAURANTE
+POST http://{{host}}//restaurants/0000/products/ HTTP/1.1
+content-type: application/json
+
+{
+  "name": "cheeseburguer",
+  "description": "pão, carne e queijo",
+  "price": 15.00,
+  "image": "https://insira.uma.imagem.aqui.com.br/",
+}

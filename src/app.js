@@ -1,12 +1,9 @@
 const express = require('express');
-// const morgan = require('morgan');
-
 const app = express();
-// app.use(morgan('common'));
+const routes = require('./router');
+
 app.use(express.json());
 
-app.post('/health', (_, res) => {
-  res.send();
-});
+app.use('/', routes);
 
 module.exports = app;
