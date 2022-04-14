@@ -1,6 +1,6 @@
 @hostname = localhost
 #@hostname = 18.231.147.204
-@port = 3003
+@port = 3000
 
 @host = {{hostname}}:{{port}}
 
@@ -44,7 +44,7 @@ GET http://{{host}}/products/9999
 
 
 ### {GET} ADDITIONALS DE UM PRODUTO UNICO VÁLIDO
-GET http://{{host}}/products/45/additionals
+GET http://{{host}}/products/50/additionals
 
 ### {GET} ADDITIONALS DE UM PRODUTO UNICO INVÁLIDO
 GET http://{{host}}/products/999/additionals

@@ -30,6 +30,7 @@ export default class ProductModel {
     return resultQuery.rows;
   }
 
+
   async create(product) {
     const {
       name, description, price, image, idRestaurant,

@@ -77,7 +77,21 @@ export default class RestaurantModel {
       values: [idRestaurant],
     });
 
-    return resultQuery.rows;
+    const products = await Promise.all(resultQuery.rows.map(async (product)=>{
+      const sqlQuery = `SELECT a.id, a.name, a.price
+      FROM products_extras pe
+      JOIN additionals a
+      ON pe.id_additional = a.id
+      WHERE pe.id_product = ${product.id};`;
+
+      const resultAdditionals = await this.dbConnection.query(sqlQuery);
+      const productWithAdditionals = {
+        ...product,
+        additionals: resultAdditionals.rows,
+      };
+      return productWithAdditionals;
+    }));
+    return products;
   }
 }
 
