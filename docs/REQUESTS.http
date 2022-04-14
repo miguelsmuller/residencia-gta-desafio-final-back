@@ -1,16 +1,24 @@
+#@hostname = 18.231.147.204
+#@port = 1234
+
 @hostname = localhost
-@port = 1234
+@port = 3000
+
 @host = {{hostname}}:{{port}}
 
 
 
-###
+### API HEALTH
 POST http://{{host}}/health
 
+### EndPoint inválido
+GET http://{{host}}/url_invalida
 
 
-###
+
+### {GET} LISTA DE RESTAURANTES
 GET http://{{host}}/restaurants
+
 
 
 ### {GET} RESTAURANTE ESPECIFICO VÁLIDO

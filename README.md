@@ -21,8 +21,30 @@
 
 ## Docker
 
-- `docker-compose down -v`
+### Para Ambiente de Desenvolvimento
 
-- `docker-compose up --detach --force-recreate --build`
+`docker-compose --env-file .env up --detach database pgadmin --force-recreate --build`
+
+_**with DB_HOST = localhost**_
+
+### Para Ambiente de Produção
+
+`docker-compose --env-file .env up --detach database api --force-recreate --build`
+
+_**with DB_HOST = database**_
+
+### Encerrar o docker
+
+- `docker-compose stop`
+  - Interrompe os container do projeto
+- `docker-compose down -v`
+  - Apaga o conjunto removendo os volumes do projeto
+
+### Portas Abertas na máquina
 
 - `netstat -a -b`
+
+### Outros
+
+- `docker build -t {NOME-IMAGEM} .`
+- `docker run -p 8001:80 -d {NOME-IMAGEM}`
