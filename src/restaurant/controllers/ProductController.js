@@ -1,8 +1,8 @@
 import Yup from 'yup';
 export default class ProductController {
-  constructor(restaurantModel, extraModel, productModel) {
+  constructor(restaurantModel, additionalsModel, productModel) {
     this.restaurantModel = restaurantModel;
-    this.extraModel = extraModel;
+    this.additionalsModel = additionalsModel;
     this.productModel = productModel;
   }
 
@@ -54,26 +54,26 @@ export default class ProductController {
       return;
     }
     const {
-      name, description, price, image, extras, idRestaurant,
+      name, description, price, image, additionals, idRestaurant,
     } = req.body;
 
-    // const isRestaurantExists = await this.restaurantModel.getById(idRestaurant);
+    const isRestaurantExists = await this.restaurantModel.getUniqueRestaurant(idRestaurant);
+    if (!isRestaurantExists) {
+      return res.sendStatus(204);
+    }
 
-    // if (!isRestaurantExists) {
-    //   return response.status(404).json({ error: 'Restaurant not found' });
-    // }
     const newProduct = {
       name, description, price, image, idRestaurant,
     };
-    const newExtras = extras;
+    const newAdditionals = additionals;
 
     const productId = await this.productModel.create(newProduct);
-    let extrasResult = 0;
-    if (extras?.length>0) {
-      extrasResult = await this.extraModel.createMany(newExtras);
+    let additionalsResult = 0;
+    if (newAdditionals?.length>0) {
+      additionalsResult = await this.additionalsModel.createMany(newAdditionals);
     }
     res.set({'Location': `/products/${productId}`})
         .status(201)
-        .send(`{"prduct_created": true, "extras_inserted": ${extrasResult}}`);
+        .send(`{"product_created": true, "additionals_inserted": ${additionalsResult}}`);
   }
 }
