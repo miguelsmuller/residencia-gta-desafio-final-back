@@ -7,18 +7,29 @@ export default class RestaurantModel {
     const {
       name, owner, address, description, image,
     } = restaurant;
-    const result = await this.dbConnection.query(
-        `
-      INSERT INTO restaurants (name, owner, address, description, image)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *
-          `, [name, owner, address, description, image]);
+
+    const sqlQuery = `
+    INSERT INTO restaurants (name, owner, address, description, image)
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *
+    `;
+
+    const result = await this.dbConnection.query({
+      text: sqlQuery,
+      values: [name, owner, address, description, image],
+    });
+
     return result;
   }
 
 
   async getAllRestaurants() {
-    const sqlQuery = `SELECT * from public.restaurants WHERE 1 = 1;`;
+    const sqlQuery = `
+    SELECT r.id, r.name, r.owner, r.address, r.description, r.image
+    FROM restaurants r
+    WHERE 1 = 1
+    ORDER BY r.name ASC, r.id ASC
+    `;
 
     const results = await this.dbConnection.query({
       text: sqlQuery,
@@ -29,7 +40,11 @@ export default class RestaurantModel {
 
 
   async getUniqueRestaurant(idRestaurant) {
-    const sqlQuery = `SELECT r.id, r.name, r.owner, r.address, r.description, r.image FROM restaurants r WHERE id = $1;`;
+    const sqlQuery = `
+    SELECT r.id, r.name, r.owner, r.address, r.description, r.image
+    FROM restaurants r
+    WHERE id = $1;
+    `;
 
     const resultQuery = await this.dbConnection.query({
       text: sqlQuery,
@@ -49,10 +64,13 @@ export default class RestaurantModel {
 
 
   async getProductsFromRestaurant(idRestaurant) {
-    const sqlQuery = `SELECT p.id, p.name, p.description, p.price, p.image
+    const sqlQuery = `
+    SELECT p.id, p.name, p.description, p.price, p.image
     FROM products p
-    JOIN restaurants r ON p.id_restaurant = r.id
-    WHERE r.id = $1;`;
+    JOIN restaurants r
+    ON p.id_restaurant = r.id
+    WHERE r.id = $1;
+    `;
 
     const resultQuery = await this.dbConnection.query({
       text: sqlQuery,
