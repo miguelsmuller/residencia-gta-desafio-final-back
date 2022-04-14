@@ -53,8 +53,9 @@ CREATE TABLE IF NOT EXISTS products_extras (
 
 
 INSERT INTO restaurants(name, owner, address, description, image)
-  VALUES ('Restaurante1', 'Miguel Muller', 'Rua da Ladeira', 'Restaurante Underground', 'http://');
-
+VALUES ('Restaurante1', 'Miguel Muller', 'Rua da Ladeira', 'Restaurante Underground', 'http://');
+INSERT INTO restaurants(name, owner, address, description, image)
+VALUES ('Restaurant2', 'Alexia Assumpção', 'Rua sem saída', 'Restaurante Hardcore', 'http://');
 
 
 
@@ -67,6 +68,8 @@ VALUES (1, 'X-Tudo', 'Mega Tudão Delicioso', 14.32, 'http://teste');
 INSERT INTO products(id_restaurant, name, description, price, image)
 VALUES (1, 'X-Salada', 'Mega Saladão Delicioso', 11.78, 'http://teste');
 
+INSERT INTO products(id_restaurant, name, description, price, image)
+VALUES (2, 'X-Tudo', 'Tudão Mega Supimpa', 11.21, 'http://teste');
 
 
 

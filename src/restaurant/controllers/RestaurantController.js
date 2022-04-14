@@ -19,10 +19,46 @@ export default class RestaurantController {
   }
 
 
-  async getAll(_, res) {
-    const response = await this.restaurantModel.getAll();
+  async getAllRestaurants(_, res) {
+    const response = await this.restaurantModel.getAllRestaurants();
 
     res.json(response);
+  }
+
+
+  async getUniqueRestaurant(req, res) {
+    const {idRestaurant} = req.params;
+
+    const content = await this.restaurantModel.getUniqueRestaurant(idRestaurant);
+
+    if (!content) {
+      res.sendStatus(204);
+      return;
+    }
+
+    res.json(content);
+  }
+
+
+  async getUniqueRestaurantWithProducts(req, res) {
+    const {idRestaurant} = req.params;
+
+    const content = await this.restaurantModel.getUniqueRestaurantWithProducts(idRestaurant);
+
+    const restaurant = content[0];
+    const products = content[1];
+
+    if (!restaurant || !products) {
+      res.sendStatus(204);
+      return;
+    }
+
+    const returnFormatad = {
+      ...restaurant,
+      products: products,
+    };
+
+    res.json(returnFormatad);
   }
 
 

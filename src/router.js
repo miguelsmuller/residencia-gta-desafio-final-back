@@ -16,7 +16,7 @@ const mProduct = new ProductModel(dbConnection);
 const cProduct = new ProductController(mProduct);
 
 router.get('/restaurants', (req, res) => {
-  controller.getAll(req, res);
+  controller.getAllRestaurants(req, res);
 });
 
 router.post('/restaurants', (req, res) => {
@@ -45,11 +45,11 @@ router.post('/health', (req, res) => {
 });
 
 router.get('/restaurants/:idRestaurant', function(req, res) {
-  res.send('{GET} RESTAURANTE ESPECIFICO');
+  controller.getUniqueRestaurant(req, res);
 });
 
 router.get('/restaurants/:idRestaurant/products', function(req, res) {
-  res.send('{GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO');
+  controller.getUniqueRestaurantWithProducts(req, res);
 });
 
 router.get('/products/:idProduto', function(req, res) {

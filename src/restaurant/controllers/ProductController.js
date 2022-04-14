@@ -8,7 +8,7 @@ export default class ProductController {
 
     const content = await this.productModel.getUniqueProduct(idProduto);
 
-    if (Object.keys(content).length == 0) {
+    if (!content) {
       res.sendStatus(204);
       return;
     }
@@ -21,11 +21,19 @@ export default class ProductController {
 
     const content = await this.productModel.getUniqueProductWithAdditionals(idProduto);
 
-    if (Object.keys(content).length == 0) {
+    const product = content[0];
+    const additionals = content[1];
+
+    if (!product || !additionals) {
       res.sendStatus(204);
       return;
     }
 
-    res.json(content);
+    const returnFormatad = {
+      ...product,
+      additionals: additionals,
+    };
+
+    res.json(returnFormatad);
   }
 }

@@ -3,36 +3,45 @@
 @host = {{hostname}}:{{port}}
 
 
+
 ###
 POST http://{{host}}/health
+
+
 
 ###
 GET http://{{host}}/restaurants
 
 
-### {GET} RESTAURANTE ESPECIFICO
-GET http://{{host}}/restaurants/0000
+### {GET} RESTAURANTE ESPECIFICO VÁLIDO
+GET http://{{host}}/restaurants/1
 
-
-### {GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO
-GET http://{{host}}/restaurants/0000/products
-
-
+### {GET} RESTAURANTE ESPECIFICO INVÁLIDO
+GET http://{{host}}/restaurants/999
 
 
 
+### {GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO VÁLIDO
+GET http://{{host}}/restaurants/1/products
 
-
-### {GET} DADOS DE UM PRODUTO UNICO
-GET http://{{host}}/products/2
-
-
-### {GET} EXTRAS DE UM PRODUTO UNICO
-GET http://{{host}}/products/2/extras
+### {GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO INVÁLIDO
+GET http://{{host}}/restaurants/9999/products
 
 
 
+### {GET} DADOS DE UM PRODUTO UNICO VÁLIDO
+GET http://{{host}}/products/1
 
+### {GET} DADOS DE UM PRODUTO UNICO INVÁLIDO
+GET http://{{host}}/products/9999
+
+
+
+### {GET} EXTRAS DE UM PRODUTO UNICO VÁLIDO
+GET http://{{host}}/products/1/extras
+
+### {GET} EXTRAS DE UM PRODUTO UNICO INVÁLIDO
+GET http://{{host}}/products/999/extras
 
 
 
@@ -47,7 +56,6 @@ content-type: application/json
   "description": "Restaurante para comidas frias",
   "image": "https://insira.uma.imagem.aqui.com.br/"
 }
-
 
 ### {POST} SALVAR PRODUTO EM UM RESTAURANTE
 POST http://{{host}}/restaurants/0000/products/ HTTP/1.1

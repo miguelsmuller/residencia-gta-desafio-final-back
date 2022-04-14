@@ -15,7 +15,7 @@ export default class ProductModel {
     const product = await this.getUniqueProduct(idProduto);
     const additionals = await this.getAdditionalsFromProduct(idProduto);
 
-    return {...product, additionals};
+    return [product, additionals];
   }
 
   async getAdditionalsFromProduct(idProduto) {
