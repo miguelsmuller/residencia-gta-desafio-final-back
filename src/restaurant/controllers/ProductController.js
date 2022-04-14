@@ -70,7 +70,7 @@ export default class ProductController {
     const productId = await this.productModel.create(newProduct);
     let additionalsResult = 0;
     if (newAdditionals?.length>0) {
-      additionalsResult = await this.additionalsModel.createMany(newAdditionals);
+      additionalsResult = await this.additionalsModel.createMany(newAdditionals, productId);
     }
     res.set({'Location': `/products/${productId}`})
         .status(201)

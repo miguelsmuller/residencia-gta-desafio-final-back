@@ -46,7 +46,7 @@ GET http://{{host}}/products/9999
 
 
 ### {GET} ADDITIONALS DE UM PRODUTO UNICO VÁLIDO
-GET http://{{host}}/products/1/additionals
+GET http://{{host}}/products/45/additionals
 
 ### {GET} ADDITIONALS DE UM PRODUTO UNICO INVÁLIDO
 GET http://{{host}}/products/999/additionals
