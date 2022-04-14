@@ -66,12 +66,37 @@ content-type: application/json
 }
 
 ### {POST} SALVAR PRODUTO EM UM RESTAURANTE
-POST http://{{host}}/restaurants/0000/products/ HTTP/1.1
+POST http://{{host}}/products/ HTTP/1.1
 content-type: application/json
 
 {
+  "idRestaurant": 1,
   "name": "cheeseburguer",
   "description": "pão, carne e queijo",
   "price": 15.00,
   "image": "https://insira.uma.imagem.aqui.com.br/"
+}
+
+
+
+### {POST} SALVAR PRODUTO com adicionais EM UM RESTAURANTE
+POST http://{{host}}/products/ HTTP/1.1
+content-type: application/json
+
+{
+  "idRestaurant": 1,
+  "name": "cheeseburguer",
+  "description": "pão, carne e queijo",
+  "price": 15.00,
+  "image": "https://insira.uma.imagem.aqui.com.br/",
+  "extras":[
+    {
+      "name": "goibada",
+      "price": 15.90
+    },
+    {
+      "name": "açúcar",
+      "price": 1.20
+    }
+  ]
 }

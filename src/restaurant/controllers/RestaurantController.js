@@ -1,9 +1,23 @@
+import Yup from 'yup';
 export default class RestaurantController {
   constructor(restaurantModel) {
     this.restaurantModel = restaurantModel;
   }
 
   async store(req, res) {
+    const validator = Yup.object().shape({
+      name: Yup.string().required().max(50),
+      owner: Yup.string().required().max(50),
+      address: Yup.string().required().max(50),
+      description: Yup.string().required().max(255),
+      image: Yup.string().required().url(),
+    });
+
+    if (!validator.isValidSync(req.body)) {
+      res.sendStatus(422);
+      return;
+    }
+
     const {
       name, owner, address, description, image,
     } = req.body;
@@ -11,9 +25,8 @@ export default class RestaurantController {
     const newRestaurant = {
       name, owner, address, description, image,
     };
-    console.log('model: ', RestaurantModel);
 
-    const restaurantId = await RestaurantModel.create(newRestaurant);
+    const restaurantId = await this.restaurantModel.create(newRestaurant);
     res.setHeader('Location', `/restaurants/${restaurantId}`);
     res.sendStatus(201);
   }

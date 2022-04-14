@@ -16,4 +16,3 @@ const dbConnection = new pg.Pool(initOptions);
 await dbConnection.connect();
 
 export default dbConnection;
-

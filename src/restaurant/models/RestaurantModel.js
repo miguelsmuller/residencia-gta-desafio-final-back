@@ -4,24 +4,16 @@ export default class RestaurantModel {
   }
 
   async create(restaurant) {
-    console.log('bd> ', db.query);
     const {
       name, owner, address, description, image,
     } = restaurant;
-    // const sql = `
-    //   INSERT INTO restaurants (name, owner, address, description, image)
-    //   VALUES ($1, $2, $3, $4, $5)
-    //   RETURNING *
-    //       `;
-    const result = await db.query(
+    const result = await this.dbConnection.query(
         `
       INSERT INTO restaurants (name, owner, address, description, image)
-      VALUES (${name}, ${owner}, ${address}, ${description}, ${image})
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *
-          `,
-    );
-    console.log('result: ', result);
-    return result.insertId;
+          `, [name, owner, address, description, image]);
+    return result;
   }
 
 

@@ -29,5 +29,18 @@ export default class ProductModel {
 
     return resultQuery.rows;
   }
+
+  async create(product) {
+    const {
+      name, description, price, image, idRestaurant,
+    } = product;
+    const result = await this.dbConnection.query(
+        `
+        INSERT INTO products (name, description, price, image, id_restaurant)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *
+            `, [name, description, price, image, idRestaurant]);
+    return result.rows[0].id;
+  }
 }
 
