@@ -45,11 +45,11 @@ GET http://{{host}}/products/9999
 
 
 
-### {GET} EXTRAS DE UM PRODUTO UNICO VÁLIDO
-GET http://{{host}}/products/1/extras
+### {GET} ADDITIONALS DE UM PRODUTO UNICO VÁLIDO
+GET http://{{host}}/products/45/additionals
 
-### {GET} EXTRAS DE UM PRODUTO UNICO INVÁLIDO
-GET http://{{host}}/products/999/extras
+### {GET} ADDITIONALS DE UM PRODUTO UNICO INVÁLIDO
+GET http://{{host}}/products/999/additionals
 
 
 
@@ -89,7 +89,7 @@ content-type: application/json
   "description": "pão, carne e queijo",
   "price": 15.00,
   "image": "https://insira.uma.imagem.aqui.com.br/",
-  "extras":[
+  "additionals":[
     {
       "name": "goibada",
       "price": 15.90
@@ -99,4 +99,15 @@ content-type: application/json
       "price": 1.20
     }
   ]
+}
+### {POST} SALVAR PRODUTO EM UM RESTAURANTE QUE NÃO EXISTE
+POST http://{{host}}/products/ HTTP/1.1
+content-type: application/json
+
+{
+  "idRestaurant": 30000,
+  "name": "cheeseburguer",
+  "description": "pão, carne e queijo",
+  "price": 15.00,
+  "image": "https://insira.uma.imagem.aqui.com.br/"
 }

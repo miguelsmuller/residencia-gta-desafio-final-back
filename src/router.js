@@ -3,7 +3,7 @@ import express from 'express';
 import dbConnection from './commons/database/dbConnection.js';
 import RestaurantModel from './restaurant/models/RestaurantModel.js';
 import ProductModel from './restaurant/models/ProductModel.js';
-import ExtraModel from './restaurant/models/ExtraModel.js';
+import AdditionalsModel from './restaurant/models/AdditionalsModel.js';
 
 import RestaurantController from './restaurant/controllers/RestaurantController.js';
 import ProductController from './restaurant/controllers/ProductController.js';
@@ -13,9 +13,9 @@ const router = express.Router();
 const restaurantModel = new RestaurantModel(dbConnection);
 const restaurantController = new RestaurantController(restaurantModel);
 
-const extraModel = new ExtraModel(dbConnection);
+const additionalsModel = new AdditionalsModel(dbConnection);
 const productModel = new ProductModel(dbConnection);
-const productController = new ProductController(restaurantModel, extraModel, productModel);
+const productController = new ProductController(restaurantModel, additionalsModel, productModel);
 
 // POST's Router
 router.post('/restaurants', (req, res) => {
@@ -51,7 +51,7 @@ router.get('/products/:idProduto', function(req, res) {
   productController.getUniqueProduct(req, res);
 });
 
-router.get('/products/:idProduto/extras', function(req, res) {
+router.get('/products/:idProduto/additionals', function(req, res) {
   productController.getUniqueProductWithAdditionals(req, res);
 });
 
