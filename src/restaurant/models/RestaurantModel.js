@@ -18,18 +18,23 @@ export default class RestaurantModel {
 
 
   async getAllRestaurants() {
-    const sql = `SELECT * from public.restaurants WHERE 1 = 1;`;
+    const sqlQuery = `SELECT * from public.restaurants WHERE 1 = 1;`;
 
-    const results = await this.dbConnection.query(sql);
+    const results = await this.dbConnection.query({
+      text: sqlQuery,
+    });
 
     return results.rows;
   }
 
 
   async getUniqueRestaurant(idRestaurant) {
-    const sqlQuery = `SELECT * FROM restaurants WHERE id = ${idRestaurant};`;
+    const sqlQuery = `SELECT r.id, r.name, r.owner, r.address, r.description, r.image FROM restaurants r WHERE id = $1;`;
 
-    const resultQuery = await this.dbConnection.query(sqlQuery);
+    const resultQuery = await this.dbConnection.query({
+      text: sqlQuery,
+      values: [idRestaurant],
+    });
 
     return resultQuery.rows[0];
   }
@@ -44,12 +49,15 @@ export default class RestaurantModel {
 
 
   async getProductsFromRestaurant(idRestaurant) {
-    const sqlQuery = `SELECT *
+    const sqlQuery = `SELECT p.id, p.name, p.description, p.price, p.image
     FROM products p
     JOIN restaurants r ON p.id_restaurant = r.id
-    WHERE r.id = ${idRestaurant};`;
+    WHERE r.id = $1;`;
 
-    const resultQuery = await this.dbConnection.query(sqlQuery);
+    const resultQuery = await this.dbConnection.query({
+      text: sqlQuery,
+      values: [idRestaurant],
+    });
 
     return resultQuery.rows;
   }

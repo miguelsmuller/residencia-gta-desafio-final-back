@@ -4,7 +4,7 @@ export default class ProductModel {
   }
 
   async getUniqueProduct(idProduto) {
-    const sqlQuery = `SELECT * FROM products WHERE id = ${idProduto};`;
+    const sqlQuery = `SELECT p.id, p.id_restaurant, p.name, p.description, p.price, p.image FROM products p WHERE id = ${idProduto};`;
 
     const resultQuery = await this.dbConnection.query(sqlQuery);
 

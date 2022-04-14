@@ -22,7 +22,7 @@ GET http://{{host}}/restaurants
 
 
 ### {GET} RESTAURANTE ESPECIFICO VÁLIDO
-GET http://{{host}}/restaurants/1
+GET http://{{host}}/restaurants/2
 
 ### {GET} RESTAURANTE ESPECIFICO INVÁLIDO
 GET http://{{host}}/restaurants/999
