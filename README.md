@@ -23,13 +23,13 @@
 
 ### Para Ambiente de Desenvolvimento
 
-`docker-compose --env-file .env up --detach database pgadmin --force-recreate --build`
+`docker-compose up database pgadmin --detach --force-recreate --build`
 
 _**with DB_HOST = localhost**_
 
 ### Para Ambiente de Produção
 
-`docker-compose --env-file .env up --detach database api --force-recreate --build`
+`docker-compose up database api --detach --force-recreate --build`
 
 _**with DB_HOST = database**_
 

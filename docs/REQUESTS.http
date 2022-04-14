@@ -2,7 +2,7 @@
 #@port = 1234
 
 @hostname = localhost
-@port = 3000
+@port = 3003
 
 @host = {{hostname}}:{{port}}
 

@@ -4,15 +4,20 @@ services:
   database:
     image: postgres
     restart: always
+    env_file: .env
     environment:
       POSTGRES_USER: 'admin'
       POSTGRES_PASSWORD: 'admin'
+    volumes:
+       - ./docs/SCHEMA.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - '5433:5432'
+      - '5432:5432'
     networks:
       - appNetwork
+
   api:
     image: node:16
+    env_file: .env
     build:
       context: .
     depends_on:
@@ -25,6 +30,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    env_file: .env
     environment:
       PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"

@@ -1,3 +1,5 @@
+\c postgres;
+
 CREATE TABLE IF NOT EXISTS restaurants (
   "id" SERIAL,
   "name" TEXT,
