@@ -1,7 +1,5 @@
-#@hostname = 18.231.147.204
-#@port = 1234
-
 @hostname = localhost
+#@hostname = 18.231.147.204
 @port = 3003
 
 @host = {{hostname}}:{{port}}

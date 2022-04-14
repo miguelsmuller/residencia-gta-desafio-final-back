@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3003
 
 ENTRYPOINT [ "node", "src/server.js" ]

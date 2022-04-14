@@ -23,7 +23,7 @@ services:
     depends_on:
       - database
     ports:
-      - '${SERVER_PORT}:3000'
+      - '${SERVER_PORT}:${SERVER_PORT}'
     restart: unless-stopped
     networks:
       - appNetwork
