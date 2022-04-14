@@ -15,9 +15,7 @@ const controller = new RestaurantController(model);
 const mProduct = new ProductModel(dbConnection);
 const cProduct = new ProductController(mProduct);
 
-router.get('/restaurants', (req, res) => {
-  controller.getAllRestaurants(req, res);
-});
+// POST's Router
 
 router.post('/restaurants', (req, res) => {
   // dbConnection.query(`
@@ -36,13 +34,23 @@ router.post('/restaurants', (req, res) => {
 //   next();
 // });
 
-router.get('/', function(req, res) {
-  res.send('home');
+router.post('/restaurants/:idRestaurant/products/', function(req, res) {
+  res.send('{POST} SALVAR PRODUTO EM UM RESTAURANTE');
 });
 
 router.post('/health', (req, res) => {
   res.send();
 });
+
+// GET's Router
+router.get('/', function(req, res) {
+  res.send('home');
+});
+
+router.get('/restaurants', (req, res) => {
+  controller.getAllRestaurants(req, res);
+});
+
 
 router.get('/restaurants/:idRestaurant', function(req, res) {
   controller.getUniqueRestaurant(req, res);
@@ -60,8 +68,9 @@ router.get('/products/:idProduto/extras', function(req, res) {
   cProduct.getUniqueProductWithAdditionals(req, res);
 });
 
-router.post('/restaurants/:idRestaurant/products/', function(req, res) {
-  res.send('{POST} SALVAR PRODUTO EM UM RESTAURANTE');
+router.use('/*', function(req, res, next) {
+  res.sendStatus(404);
+  return;
 });
 
 export default router;
