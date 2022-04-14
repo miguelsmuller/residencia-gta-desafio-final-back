@@ -53,8 +53,7 @@ _Lembrar de implementar validações_
 
 ```
 
-- SUGESTÃO `GET {URL}/products/:id`
-- GET {URL}/restaurants/:id/products/:id
+- GET {URL}/products/:id
   `ja vir com os adicionais de cada produto`
   **response body**
 
@@ -67,8 +66,7 @@ _Lembrar de implementar validações_
 }
 ```
 
-- SUGESTÃO `GET {URL}/products/:id/extras`
-- GET {URL}/restaurants/:id/products/:id/extras
+- GET {URL}/products/:id/extras
   `ja vir com os adicionais de cada produto`
   **response body**
 

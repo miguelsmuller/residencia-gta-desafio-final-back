@@ -18,12 +18,20 @@ GET http://{{host}}/restaurants/0000
 GET http://{{host}}/restaurants/0000/products
 
 
+
+
+
+
+
 ### {GET} DADOS DE UM PRODUTO UNICO
-GET http://{{host}}/restaurants/0000/products/9999
+GET http://{{host}}/products/2
 
 
 ### {GET} EXTRAS DE UM PRODUTO UNICO
-GET http://{{host}}/restaurants/0000/products/9999/extras
+GET http://{{host}}/products/2/extras
+
+
+
 
 
 

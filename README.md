@@ -21,4 +21,8 @@
 
 ## Docker
 
-`docker-compose up --detach --force-recreate --build`
+- `docker-compose down -v`
+
+- `docker-compose up --detach --force-recreate --build`
+
+- `netstat -a -b`

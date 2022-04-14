@@ -2,7 +2,7 @@
 
 **`Postgres`** X ~~**MySQL**~~
 
-![DER](./images/DER.jpg)
+![DER](../images/DER.jpg)
 
 ### restaurants
 

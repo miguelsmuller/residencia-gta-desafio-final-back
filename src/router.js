@@ -1,16 +1,19 @@
 import express from 'express';
 
 import dbConnection from './commons/database/dbConnection.js';
-
 import RestaurantModel from './restaurant/models/RestaurantModel.js';
-
 import RestaurantController from './restaurant/controllers/RestaurantController.js';
+
+import ProductModel from './restaurant/models/ProductModel.js';
+import ProductController from './restaurant/controllers/ProductController.js';
 
 const router = express.Router();
 
 const model = new RestaurantModel(dbConnection);
 const controller = new RestaurantController(model);
 
+const mProduct = new ProductModel(dbConnection);
+const cProduct = new ProductController(mProduct);
 
 router.get('/restaurants', (req, res) => {
   controller.getAll(req, res);
@@ -33,31 +36,31 @@ router.post('/restaurants', (req, res) => {
 //   next();
 // });
 
-router.get('/', function(_, res) {
+router.get('/', function(req, res) {
   res.send('home');
 });
 
-router.post('/health', (_, res) => {
+router.post('/health', (req, res) => {
   res.send();
 });
 
-router.get('/restaurants/:idRestaurant', function(_, res) {
+router.get('/restaurants/:idRestaurant', function(req, res) {
   res.send('{GET} RESTAURANTE ESPECIFICO');
 });
 
-router.get('/restaurants/:idRestaurant/products', function(_, res) {
+router.get('/restaurants/:idRestaurant/products', function(req, res) {
   res.send('{GET} PRODUTOS DE UM RESTAURANTE ESPECIFICO');
 });
 
-router.get('/restaurants/:idRestaurant/products/:idProduto', function(_, res) {
-  res.send('{GET} DADOS DE UM PRODUTO UNICO');
+router.get('/products/:idProduto', function(req, res) {
+  cProduct.getUniqueProduct(req, res);
 });
 
-router.get('/restaurants/:idRestaurant/products/:idProduto/extras', function(_, res) {
-  res.send('{GET} EXTRAS DE UM PRODUTO UNICO');
+router.get('/products/:idProduto/extras', function(req, res) {
+  cProduct.getUniqueProductWithAdditionals(req, res);
 });
 
-router.post('/restaurants/:idRestaurant/products/', function(_, res) {
+router.post('/restaurants/:idRestaurant/products/', function(req, res) {
   res.send('{POST} SALVAR PRODUTO EM UM RESTAURANTE');
 });
 
