@@ -1,10 +1,7 @@
-@hostname = localhost
-#@hostname = 18.231.147.204
-@port = 3000
+@hostname = {{$dotenv SERVER_NAME}}
+@port = {{$dotenv SERVER_PORT}}
 
 @host = {{hostname}}:{{port}}
-
-
 
 ### API HEALTH
 POST http://{{host}}/health
@@ -60,7 +57,7 @@ content-type: application/json
   "owner": "Ronald MC Donalds",
   "address": "Rua sem cobertura, 33",
   "description": "Restaurante para comidas frias",
-  "image": "https://insira.uma.imagem.aqui.com.br/"
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2GP4qv6h5n6vkthBkt_vQX-X59yZrvWGo5sp0SO1-o2RUZ2AR_rsVsrxy_di5UvFnpZ0&usqp=CAU"
 }
 
 ### {POST} SALVAR PRODUTO EM UM RESTAURANTE
@@ -86,7 +83,7 @@ content-type: application/json
   "name": "cheeseburguer",
   "description": "pão, carne e queijo",
   "price": 15.00,
-  "image": "https://insira.uma.imagem.aqui.com.br/",
+  "image": "https://guiadopastel.com.br/wp-content/uploads/2020/04/4-receitas-de-massa-de-pastel-dourado-1200x840.jpg",
   "additionals":[
     {
       "name": "goibada",
